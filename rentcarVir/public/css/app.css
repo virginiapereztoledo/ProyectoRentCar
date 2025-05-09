@@ -543,3 +543,83 @@ input.form-control {
     outline: none;  /* Eliminar el borde por defecto */
     transform: scale(1.1);  /* Aumento cuando se enfoca */
 }
+/* Estilos específicos solo para esta página */
+.empleado-form .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Reducido el margen entre los campos */
+    width: 100%;
+}
+
+.empleado-form .form-group label {
+    margin-right: 5px !important; /* Reducir el espacio entre el label y el input */
+    width: 150px !important; /* Definir un ancho fijo para los labels */
+    text-align: right;
+}
+
+.empleado-form .form-group input {
+    flex-grow: 1 !important;
+    width: calc(100% - 160px) !important; /* Asegurar que el input ocupe el espacio restante */
+    margin-bottom: 0; /* Eliminar el espacio extra debajo de los inputs */
+}
+
+/* Centrar el formulario en la pantalla */
+.empleado-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Centrar el botón de submit */
+.empleado-form .form-button button {
+    padding: 0.5rem 1.5rem;
+}
+/* Estilo para hacer que el área donde se hace clic para subir la foto sea más grande */
+.alargado-input {
+    position: absolute; /* Esto permite que el input de tipo file se sobreponga al área */
+    top: 0; /* Asegura que el input ocupe toda la parte superior de su contenedor */
+    left: 0; /* Asegura que ocupe el lado izquierdo */
+    width: 100%; /* Hace que ocupe todo el ancho disponible del contenedor */
+    height: 100%; /* Asegura que ocupe todo el alto disponible del contenedor */
+    opacity: 0; /* Esto hace invisible el input para que el estilo no afecte la apariencia */
+    cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+}
+
+/* Estilo para el contenedor que incluye el botón y la imagen */
+.image-item-container {
+    position: relative; /* Hace que los elementos dentro del contenedor puedan ser posicionados */
+    display: inline-block;
+    width: 250px; /* Puedes ajustar el ancho */
+    height: 250px; /* Asegúrate de que el contenedor sea lo suficientemente alto */
+    text-align: center; /* Centra el contenido de texto dentro del contenedor */
+}
+
+/* Estilo para la imagen que debe aparecer dentro del contenedor */
+.image-item {
+    width: 100%; /* La imagen ocupa el 100% del espacio del contenedor */
+    height: 100%; /* La imagen ocupa el 100% del espacio del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+}
+
+/* Estilo para el texto que aparece debajo de la imagen */
+.edit-item-cont {
+    position: absolute;
+    bottom: 10px; /* Coloca el texto justo por debajo de la imagen */
+    left: 0;
+    right: 0;
+    text-align: center; /* Centra el texto debajo de la imagen */
+    color: black; /* Cambia el color del texto a negro */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.edit-item-icon {
+    margin-right: 5px;
+}
+
+.edit-item-text {
+    font-size: 14px;
+    font-weight: bold;
+}
