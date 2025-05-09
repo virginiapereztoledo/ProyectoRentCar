@@ -62,7 +62,7 @@ DB_PASSWORD=
   
 10. **Ejecuta la aplicación:**:
 
-   ```bash
+    ```bash
     php artisan serve
     ```
 
