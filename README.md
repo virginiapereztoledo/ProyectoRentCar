@@ -53,8 +53,14 @@ DB_PASSWORD=
     ```bash
     composer require laravel/sanctum
      ```
+    
+ 9. **Si no tenemos la base de datos :**:
+
+    ```bash
+    php artisan migrate --seed
+     ```
   
-9. **Ejecuta la aplicación::**:
+10. **Ejecuta la aplicación::**:
 
    ```bash
     php artisan serve
