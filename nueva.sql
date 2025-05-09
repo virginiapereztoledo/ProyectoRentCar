@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2025 a las 23:57:53
+-- Tiempo de generación: 09-05-2025 a las 20:49:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,24 +38,22 @@ CREATE TABLE `alquiler` (
   `importe` decimal(9,2) NOT NULL,
   `activo` tinyint(1) NOT NULL,
   `clienteID` bigint(20) UNSIGNED NOT NULL,
-  `vehiculoID` bigint(20) UNSIGNED NOT NULL
+  `vehiculoID` bigint(20) UNSIGNED NOT NULL,
+  `fechaDevolucion` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `alquiler`
 --
 
-INSERT INTO `alquiler` (`id`, `fechaRecogida`, `lugarRecogida`, `horaRecogida`, `fechaEntrega`, `lugarEntrega`, `horaEntrega`, `importe`, `activo`, `clienteID`, `vehiculoID`) VALUES
-(7, '2025-04-16', 'Fuengirola', '08:00', '2025-04-17', 'Fuengirola', '08:00', 95.00, 0, 1, 13),
-(8, '2025-04-17', 'Fuengirola', '08:00', '2025-04-18', 'Fuengirola', '08:00', 75.00, 1, 4948, 12),
-(9, '2025-04-18', 'Fuengirola', '08:00', '2025-04-19', 'Fuengirola', '08:00', 85.00, 0, 1, 11),
-(10, '2025-04-17', 'Fuengirola', '08:00', '2025-04-18', 'Fuengirola', '08:00', 75.00, 0, 1, 12),
-(11, '2025-04-17', 'Fuengirola', '08:00', '2025-04-18', 'Fuengirola', '08:00', 75.00, 0, 1, 12),
-(12, '2025-04-17', 'Fuengirola', '08:00', '2025-04-18', 'Fuengirola', '08:00', 95.00, 0, 4949, 13),
-(13, '2026-01-20', 'Fuengirola', '08:00', '2026-02-21', 'Fuengirola', '08:00', 2400.00, 0, 1, 12),
-(14, '2025-04-18', 'Fuengirola', '08:00', '2025-04-19', 'Fuengirola', '08:00', 75.00, 0, 1, 12),
-(15, '2025-04-20', 'Fuengirola', '08:00', '2025-04-22', 'Fuengirola', '08:00', 170.00, 0, 4950, 11),
-(16, '2025-04-18', 'Fuengirola', '08:00', '2025-04-20', 'Fuengirola', '08:00', 150.00, 1, 1, 12);
+INSERT INTO `alquiler` (`id`, `fechaRecogida`, `lugarRecogida`, `horaRecogida`, `fechaEntrega`, `lugarEntrega`, `horaEntrega`, `importe`, `activo`, `clienteID`, `vehiculoID`, `fechaDevolucion`) VALUES
+(7, '2025-05-16', 'Fuengirola', '08:00', '2025-05-18', 'Fuengirola', '08:00', 95.00, 0, 1, 13, '2025-05-18 05:10:00'),
+(8, '2025-06-17', 'Fuengirola', '08:00', '2025-06-18', 'Fuengirola', '08:00', 75.00, 1, 4948, 12, NULL),
+(9, '2025-05-10', 'Fuengirola', '08:00', '2025-05-15', 'Fuengirola', '08:00', 450.00, 0, 1, 10, '2025-05-15 05:02:00'),
+(10, '2025-05-10', 'Fuengirola', '08:00', '2025-05-12', 'Fuengirola', '08:00', 180.00, 1, 1, 10, '2025-05-10 05:10:00'),
+(11, '2025-05-10', 'Fuengirola', '08:00', '2025-05-11', 'Fuengirola', '08:00', 82.00, 0, 4951, 16, '2025-05-11 05:00:00'),
+(12, '2025-05-15', 'Fuengirola', '08:00', '2025-05-16', 'Fuengirola', '08:00', 90.00, 0, 4952, 10, NULL),
+(13, '2025-05-10', 'Fuengirola', '08:00', '2025-06-30', 'Fuengirola', '08:00', 4590.00, 1, 4952, 10, NULL);
 
 -- --------------------------------------------------------
 
@@ -83,7 +81,8 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellidos`, `domicilio`, `ocupacion`, `f
 (4947, 'prueba', 'prueba', 'prueba', 'Empleado', '2000-10-10', 'storage/cliente/4947.png'),
 (4948, 'Estrella', 'Estella', 'fuengirola', 'Estudiante', '1990-08-19', 'storage/cliente/4948.png'),
 (4949, 'Virginia', 'Virginia', 'Malaga', 'No especificado', '1992-05-16', 'storage/cliente/4949.png'),
-(4950, 'estrella', 'M a', 'rio tinto', 'No especificado', '1990-08-19', '../storage/persona.png');
+(4951, 'Pedro', 'Pedro', 'Prueba', 'No especificado', '1990-10-10', '../storage/persona.png'),
+(4952, 'prueba', 'prueba', 'prueba', 'No especificado', '1990-05-16', '../storage/persona.png');
 
 -- --------------------------------------------------------
 
@@ -130,7 +129,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2025_04_04_163525_create_vehiculo_table', 1),
 (5, '2025_04_04_163547_create_alquiler_table', 1),
 (6, '2025_04_04_163619_create_sessions_table', 1),
-(7, '2025_04_16_132924_add_disponible_to_vehiculo_table', 1);
+(7, '2025_04_16_132924_add_disponible_to_vehiculo_table', 1),
+(8, '2025_05_07_224236_add_lat_lng_to_vehiculo_table', 1),
+(9, '2025_05_09_172840_add_fecha_devolucion_to_alquileres_table', 2);
 
 -- --------------------------------------------------------
 
@@ -152,8 +153,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5D9kzsCNJkhzoJ2dL4ckKZzKuEeSmVvasYM4y7Eb', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiM045SnRFU3NYUWlVTGo4U0F4eE5QVWhDY2t2NFJnMnhtOFk1Y2hBdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hcGkvdmVoaWN1bG9zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mzt9', 1746654980),
-('aXVoG66LO4rmCCoGfJxhwvQB6CZb0kQttvGSAbB4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibXNUTTVzMFc2R0NmSDl6RXg4c0drZUVUVFl1M0h1NGdubGdYNUE2cyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1746285153);
+('QhtPgVVlfpL97Fow9qg5HnB5rpVntDOkLfipYudK', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZWJhREIxUlhSa0RocksxS0JQTnhlY0ppU2FhdDJWYUcwMFphaFZXYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tYW5hZ2VtZW50L3ZlaGljdWxvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mzt9', 1746815548);
 
 -- --------------------------------------------------------
 
@@ -175,16 +175,17 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `username`, `password`, `utenteable_id`, `utenteable_type`, `remember_token`) VALUES
-(1, 'clientecliente', '$2y$12$5RvB7MQf.DorHHpHYbFfBOIINt.mdUscvK7cxufr5T9UpDVQqk.ry', 1, 'App\\Models\\Cliente', 'FzX5RjAKd4HNkapq0fYsjo8mEEcrcUCeeOhtW8TeQZ5KhzCPotacDxllLgti'),
-(2, 'empleadoempleado', '$2y$12$uN9JBXy3D2P9xW/m8uRHIOUUjG882u3qRMWgPnCzhhVX33cvMKqgO', 1, 'App\\Models\\Empleado', 'QPGNdzVrl5bTxAj1VXAc4ecu9LXzh8bVM4DFX0Jh2JeMpnXgbXupFauHxEFO'),
-(3, 'adminadmin', '$2y$12$wP95JGorgZsdJlct7ppPB.3q4K/BrxhJmf5rk6fzgnSlSDMPTmMi.', NULL, 'Admin', 'Cqo32VurrYUYd0i6QIALn6ahv6hajwwZarjXH68MhuzFPRZ1V4dYMVjGJXph'),
-(4981, 'Virginia1', '$2y$12$BiCI4DuvN7zoeBumJLeUx.rAVzbYIKp2c0svhTPhPbztyoSIyL7rm', 4885, 'App\\Models\\Empleado', NULL),
-(4982, 'TestdosTestdos', '$2y$12$Sg57rN4884WaFgq44wOOZuOsX/uV6TCXuAXFESBRrUZTZysvVRyu6', 4886, 'App\\Models\\Empleado', NULL),
-(4983, 'Clienteuno', '$2y$12$xg2RDLrCdwWqt6AH2J8lk.MvfO2C8al41LUT8nz65kR1BIZa4YAQS', 4946, 'App\\Models\\Cliente', NULL),
-(4984, 'Prueba2025', '$2y$12$i5tl4YdARpN9TSGmtXQa4O0Ji4wSZ3vf.dWEUBYWsXK/cqxN5n3zm', 4947, 'App\\Models\\Cliente', NULL),
-(4985, 'Estrella1', '$2y$12$Z88JL3IjWtUrK5er3NCUb.V8UK0z5Gc75HpwZKKgWaKvTI9DAAZL6', 4948, 'App\\Models\\Cliente', NULL),
-(4986, 'Virginia12', '$2y$12$2Kk.e.X9xkrFkFvA3JEucuSWx761r6VomlnC.3H5iWi6BTZFTeL1a', 4949, 'App\\Models\\Cliente', NULL),
-(4987, 'emalors90', '$2y$12$K82SOq9YPBQGOi/U33c7ceRP2r19piqRrY/ri8c.Cj7dLVEtp5jVO', 4950, 'App\\Models\\Cliente', NULL);
+(1, 'clientecliente', '$2y$12$5RvB7MQf.DorHHpHYbFfBOIINt.mdUscvK7cxufr5T9UpDVQqk.ry', 1, 'App\\Models\\Cliente', 'APv1EETCPfAFs0zyVJvwHGIZQ4CMfx78RmMK98CUiH4cWzNRoHKAXOMm4Ouk'),
+(2, 'empleadoempleado', '$2y$12$uN9JBXy3D2P9xW/m8uRHIOUUjG882u3qRMWgPnCzhhVX33cvMKqgO', 1, 'App\\Models\\Empleado', 'dqXCwZlGQNDM8ITywxl3H5uXyi2uhtKwCx81H9WQVMnAPzP33cpcEhls08lH'),
+(3, 'adminadmin', '$2y$12$wP95JGorgZsdJlct7ppPB.3q4K/BrxhJmf5rk6fzgnSlSDMPTmMi.', NULL, 'Admin', '4nHnWq6JU6Q9URHYdgcPEoelhrOgVo4txgkriJJWO0IA9QVS2PR2o1TDEGeQ'),
+(4981, 'Virginia1', '$2y$12$BiCI4DuvN7zoeBumJLeUx.rAVzbYIKp2c0svhTPhPbztyoSIyL7rm', 4885, 'App\\Models\\Empleado', 'QucHWOMrsHxktguFBlUXkBPDD390VZs2OKXnwUzP9y76sNX8vElZKBH35bQv'),
+(4982, 'TestdosTestdos', '$2y$12$Sg57rN4884WaFgq44wOOZuOsX/uV6TCXuAXFESBRrUZTZysvVRyu6', 4886, 'App\\Models\\Empleado', '2WThcBF5SG'),
+(4983, 'Clienteuno', '$2y$12$xg2RDLrCdwWqt6AH2J8lk.MvfO2C8al41LUT8nz65kR1BIZa4YAQS', 4946, 'App\\Models\\Cliente', 'HVj3QjmWYL'),
+(4984, 'Prueba2025', '$2y$12$i5tl4YdARpN9TSGmtXQa4O0Ji4wSZ3vf.dWEUBYWsXK/cqxN5n3zm', 4947, 'App\\Models\\Cliente', 'T4o7ERiB2m'),
+(4985, 'Estrella1', '$2y$12$Z88JL3IjWtUrK5er3NCUb.V8UK0z5Gc75HpwZKKgWaKvTI9DAAZL6', 4948, 'App\\Models\\Cliente', 'uyNOrjVvaW'),
+(4986, 'Virginia12', '$2y$12$2Kk.e.X9xkrFkFvA3JEucuSWx761r6VomlnC.3H5iWi6BTZFTeL1a', 4949, 'App\\Models\\Cliente', '8QvxBROarT'),
+(4988, 'Pedrouno1', '$2y$12$Trxb7JoVaubEvfTxUdc5Qug3kJS3uizj5WVB8C4BOBYIP5l85DpQ6', 4951, 'App\\Models\\Cliente', NULL),
+(4989, 'Prueba43', '$2y$12$fs4P9P3yOSMtK2p0kowRnudyj29pahmGLo0F8NVNe7T2u9aI17OXS', 4952, 'App\\Models\\Cliente', NULL);
 
 -- --------------------------------------------------------
 
@@ -221,10 +222,13 @@ CREATE TABLE `vehiculo` (
 --
 
 INSERT INTO `vehiculo` (`id`, `matricula`, `modelo`, `marca`, `motor`, `cambio`, `equipamiento`, `puertas`, `asientos`, `autonomia`, `color`, `foto`, `descripcion`, `disponible`, `emision`, `vencimiento`, `costoDiario`, `created_at`, `updated_at`, `lat`, `lng`) VALUES
-(10, '2222AAA', 'Yaris Hybrid', 'Toyota', 'Hibrido', 'Automatico', 'Navegador', '4', '5', 600.00, 'Blanco', 'storage/vehiculo/10.png', 'El Toyota Yaris Hybrid es un coche compacto ideal para ciudad, gracias a su tamaño reducido y su eficiencia energética. Su sistema híbrido combina un motor de gasolina con uno eléctrico, ofreciendo una conducción suave, silenciosa y con bajo consumo. Dispone de cambio automático, navegador, y etiqueta ECO, lo que lo convierte en una excelente opción para circular por zonas restringidas al tráfico.\r\n\r\nPerfecto para quienes buscan comodidad, sostenibilidad y tecnología en sus desplazamientos diarios o vacaciones.', 1, '2025-04-15', '2026-04-15', 90.00, '2025-04-15 18:48:43', '2025-04-15 18:48:43', NULL, NULL),
-(11, '2222BBB', 'Ioniq Hybrid', 'Hyundai', 'Hibrido', 'Automatico', 'Control crucero adaptativo, pantalla táctil, sensores', '5', '5', 900.00, 'Gris plata', 'storage/vehiculo/11.png', 'El Hyundai Ioniq Hybrid es una berlina moderna que destaca por su eficiencia y confort. Su sistema híbrido permite una conducción económica tanto en ciudad como en carretera. Ofrece un diseño elegante, buena capacidad de maletero y un interior cómodo equipado con tecnologías de asistencia al conductor. Ideal para viajes largos o uso diario, con bajo consumo y etiqueta ECO.', 1, '2025-04-15', '2026-04-15', 85.00, '2025-04-15 18:56:07', '2025-04-17 09:04:15', NULL, NULL),
-(12, '3333CCC', 'Clio E-Tech', 'Renault', 'Hibrido', 'Automatico', 'Pantalla táctil, modos de conducción, sensores de aparcamiento', '5', '5', 800.00, 'Rojo', 'storage/vehiculo/12.png', 'El Renault Clio E-Tech Hybrid ofrece una experiencia de conducción ágil y eficiente. Su sistema híbrido avanzado permite circular hasta el 80 % del tiempo en eléctrico por ciudad, lo que reduce el consumo y las emisiones. Compacto pero espacioso, es perfecto para quienes buscan un coche moderno, cómodo y económico.', 0, '2025-04-15', '2026-04-15', 75.00, '2025-04-15 18:58:26', '2025-05-07 19:56:19', 36.5328910, -4.6239472),
-(13, '4444DDD', 'Niro Hybrid', 'Kia', 'Hibrido', 'Automatico', 'Navegador, cámara trasera, control de crucero', '5', '5', 999.00, 'Azul oscuro', 'storage/vehiculo/13.png', 'El Kia Niro Hybrid es un SUV compacto que combina estilo, confort y tecnología. Su sistema híbrido es eficiente en cualquier tipo de trayecto, y su posición elevada mejora la visibilidad y la sensación de seguridad. Con amplio espacio interior y múltiples sistemas de asistencia, es ideal para familias o conductores que buscan versatilidad.', 1, '2025-04-15', '2026-04-15', 95.00, '2025-04-15 19:00:58', '2025-04-16 12:12:32', NULL, NULL);
+(10, '2222AAA', 'Yaris Hybrid', 'Toyota', 'Hibrido', 'Automatico', 'Navegador', '4', '5', 600.00, 'Blanco', 'storage/vehiculo/10.png', 'El Toyota Yaris Hybrid es un coche compacto ideal para ciudad, gracias a su tamaño reducido y su eficiencia energética. Perfecto para quienes buscan comodidad, sostenibilidad y tecnología en sus desplazamientos diarios o vacaciones.', 0, '2025-04-15', '2026-04-15', 90.00, '2025-04-15 16:48:43', '2025-05-09 16:30:14', 36.5332151, -4.6246474),
+(11, '2222BBB', 'Ioniq Hybrid', 'Hyundai', 'Hibrido', 'Automatico', 'Control crucero adaptativo, pantalla táctil, sensores', '5', '5', 900.00, 'Gris plata', 'storage/vehiculo/11.png', 'El Hyundai Ioniq Hybrid destaca por su eficiencia y confort, ideal para viajes largos o uso diario con bajo consumo y etiqueta ECO.', 1, '2025-04-15', '2026-04-15', 85.00, '2025-04-15 16:56:07', '2025-05-09 14:24:34', 36.5330024, -4.6241147),
+(12, '3333CCC', 'Clio E-Tech', 'Renault', 'Hibrido', 'Automatico', 'Pantalla táctil, modos de conducción, sensores de aparcamiento', '5', '5', 800.00, 'Rojo', 'storage/vehiculo/12.png', 'El Renault Clio E-Tech Hybrid ofrece una conducción ágil y eficiente, ideal para quienes buscan un coche moderno, cómodo y económico.', 0, '2025-04-15', '2026-04-15', 75.00, '2025-04-15 16:58:26', '2025-05-09 16:31:51', 36.5330024, -4.6241147),
+(13, '4444DDD', 'Niro Hybrid', 'Kia', 'Hibrido', 'Automatico', 'Navegador, cámara trasera, control de crucero', '5', '5', 999.00, 'Azul oscuro', 'storage/vehiculo/13.png', 'El Kia Niro Hybrid es un SUV compacto con tecnología híbrida eficiente, amplio espacio y excelente visibilidad.', 1, '2025-04-15', '2026-04-15', 95.00, '2025-04-15 17:00:58', '2025-05-09 16:13:14', 36.5328910, -4.6239472),
+(14, '5555EEE', 'C-HR Hybrid', 'Toyota', 'Hibrido', 'Automatico', 'Climatizador, sensores traseros', '5', '5', 700.00, 'Negro', 'storage/vehiculo/14.png', 'El Toyota C-HR Hybrid combina diseño vanguardista con rendimiento eficiente, ideal para conductores urbanos que valoran el estilo y la tecnología.', 1, '2025-05-01', '2026-05-01', 88.00, '2025-05-07 20:48:53', '2025-05-09 14:24:02', 36.5322220, -4.6241805),
+(15, '6666FFF', 'Jazz Hybrid', 'Honda', 'Hibrido', 'Automatico', 'Pantalla multimedia, cámara trasera', '5', '5', 650.00, 'Gris oscuro', 'storage/vehiculo/15.png', 'El Honda Jazz Hybrid ofrece versatilidad, consumo eficiente y amplitud, perfecto para uso diario en ciudad con etiqueta ECO.', 1, '2025-05-01', '2026-05-01', 78.00, '2025-05-07 20:48:53', '2025-05-09 14:23:15', 36.5317334, -4.6243522),
+(16, '7777GGG', 'Corolla Hybrid', 'Toyota', 'Hibrido', 'Automatico', 'Asistente de carril, climatizador, pantalla táctil', '5', '5', 750.00, 'Plata', 'storage/vehiculo/16.png', 'El Toyota Corolla Hybrid ofrece un equilibrio perfecto entre eficiencia, confort y tecnología, ideal tanto para ciudad como para carretera.', 1, '2025-05-01', '2026-05-01', 82.00, '2025-05-07 20:48:53', '2025-05-09 16:01:21', 36.5332151, -4.6246474);
 
 --
 -- Índices para tablas volcadas
@@ -286,13 +290,13 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4951;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4953;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
@@ -304,19 +308,19 @@ ALTER TABLE `empleado`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4988;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4990;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
