@@ -31,27 +31,27 @@
 
                     <div class="mb-3">
                         <label for="matricula" class="form-label">Matrícula:</label>
-                        <input type="text" id="matricula" name="matricula" class="form-control" value="{{ old('matricula') }}">
+                        <input type="text" id="matricula" name="matricula" class="form-control w-50" value="{{ old('matricula') }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="modelo" class="form-label">Modelo:</label>
-                        <input type="text" id="modelo" name="modelo" class="form-control" value="{{ old('modelo') }}">
+                        <input type="text" id="modelo" name="modelo" class="form-control w-50" value="{{ old('modelo') }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="marca" class="form-label">Marca:</label>
-                        <input type="text" id="marca" name="marca" class="form-control" value="{{ old('marca') }}">
+                        <input type="text" id="marca" name="marca" class="form-control w-50" value="{{ old('marca') }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="motor" class="form-label">Motor:</label>
-                        <input type="text" id="motor" name="motor" class="form-control" value="Hibrido" readonly>
+                        <input type="text" id="motor" name="motor" class="form-control w-50" value="Hibrido" readonly>
                     </div>
 
                     <div class="mb-3">
                         <label for="cambio" class="form-label">Cambio:</label>
-                        <select id="cambio" name="cambio" class="form-select">
+                        <select id="cambio" name="cambio" class="form-select w-25">
                             <option value="Automatico" {{ old('cambio') == 'Automatico' ? 'selected' : '' }}>Automatico</option>
                             <option value="Manual" {{ old('cambio') == 'Manual' ? 'selected' : '' }}>Manual</option>
                         </select>
@@ -59,12 +59,12 @@
 
                     <div class="mb-3">
                         <label for="equipamiento" class="form-label">Equipamiento:</label>
-                        <input type="text" id="equipamiento" name="equipamiento" class="form-control" value="{{ old('equipamiento') }}">
+                        <input type="text" id="equipamiento" name="equipamiento" class="form-control w-50" value="{{ old('equipamiento') }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="puertas" class="form-label">Puertas:</label>
-                        <select id="puertas" name="puertas" class="form-select">
+                        <select id="puertas" name="puertas" class="form-select w-25">
                             <option value="4" {{ old('puertas') == '4' ? 'selected' : '' }}>4</option>
                             <option value="5" {{ old('puertas') == '5' ? 'selected' : '' }}>5</option>
                         </select>
@@ -72,16 +72,17 @@
 
                     <div class="mb-3">
                         <label for="asientos" class="form-label">Asientos:</label>
-                        <select id="asientos" name="asientos" class="form-select">
+                        <select id="asientos" name="asientos" class="form-select w-25">
                             @for ($i = 2; $i <= 9; $i++)
                                 <option value="{{ $i }}" {{ old('asientos') == $i ? 'selected' : '' }}>{{ $i }}</option>
                             @endfor
                         </select>
                     </div>
 
+                    <!-- Autonomía: -->
                     <div class="mb-3">
                         <label for="autonomia" class="form-label">Autonomía:</label>
-                        <div class="input-group">
+                        <div class="input-group w-25 mx-auto">
                             <input type="number" id="autonomia" name="autonomia" class="form-control" step="0.01" value="{{ old('autonomia') }}">
                             <span class="input-group-text">km</span>
                         </div>
@@ -89,7 +90,7 @@
 
                     <div class="mb-3">
                         <label for="color" class="form-label">Color:</label>
-                        <input type="text" id="color" name="color" class="form-control" value="{{ old('color') }}">
+                        <input type="text" id="color" name="color" class="form-control w-50" value="{{ old('color') }}">
                     </div>
 
                     <div class="mb-3">
@@ -99,25 +100,27 @@
 
                     <div class="mb-3">
                         <label for="emision" class="form-label">Disponibilidad desde:</label>
-                        <input type="date" id="emision" name="emision" class="form-control" value="{{ old('emision') }}">
+                        <input type="date" id="emision" name="emision" class="form-control w-50" value="{{ old('emision') }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="vencimiento" class="form-label">Disponibilidad hasta:</label>
-                        <input type="date" id="vencimiento" name="vencimiento" class="form-control" value="{{ old('vencimiento') }}">
+                        <input type="date" id="vencimiento" name="vencimiento" class="form-control w-50" value="{{ old('vencimiento') }}">
                     </div>
 
+                    <!-- Costo Diario: -->
                     <div class="mb-3">
                         <label for="costoDiario" class="form-label">Costo diario:</label>
-                        <div class="input-group">
+                        <div class="input-group w-25 mx-auto">
                             <input type="number" id="costoDiario" name="costoDiario" class="form-control" step="0.01" value="{{ old('costoDiario') }}">
                             <span class="input-group-text">€</span>
                         </div>
                     </div>
 
+                    <!-- Descripción: -->
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción: (opcional)</label>
-                        <textarea id="descripcion" name="descripcion" class="form-control">{{ old('descripcion') }}</textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control w-75 mx-auto d-block">{{ old('descripcion') }}</textarea>
                     </div>
 
                     <div class="d-flex justify-content-between">
