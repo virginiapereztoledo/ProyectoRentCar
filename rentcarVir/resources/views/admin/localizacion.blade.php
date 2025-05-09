@@ -105,7 +105,7 @@ setInterval(obtenerVehiculos, 10000);
 
 
 function updateVehiculoAlquilado(posicion) {
-    // Mapa de la ruta del vehículo alquilado
+    // Ruta simulada
     var rutaAlquilado = [
         {"lat":36.53323561295315, "lon":-4.624730319844311},
         {"lat":36.53321510924789, "lon":-4.62464738759529},
@@ -119,37 +119,40 @@ function updateVehiculoAlquilado(posicion) {
         {"lat":36.53262024593697, "lon":-4.625200617090668},
         {"lat":36.53323561295315, "lon":-4.624730319844311}
     ];
-    url = '/management/vehiculo/12/actualizar-localizacion',
-    '/management/vehiculo/10/actualizar-localizacion',
-    '/management/vehiculo/11/actualizar-localizacion',
-    '/management/vehiculo/13/actualizar-localizacion',
-    '/management/vehiculo/14/actualizar-localizacion',
-    '/management/vehiculo/15/actualizar-localizacion',
-    '/management/vehiculo/16/actualizar-localizacion'
 
-    // method = 'POST';
-    axios.post(url, {
-        lat: rutaAlquilado[posicion]["lat"],
-        lng: rutaAlquilado[posicion]["lon"]
-    }, {
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
-    })
-    .then(response => {
-        console.log('Localización actualizada:', response.data);
-    })
-    .catch(error => {
-        console.error('Error al actualizar la localización:', error);
+    // Lista de URLs para cada vehículo alquilado
+    const urls = [
+        '/management/vehiculo/10/actualizar-localizacion',
+        '/management/vehiculo/11/actualizar-localizacion',
+        '/management/vehiculo/12/actualizar-localizacion',
+        '/management/vehiculo/13/actualizar-localizacion',
+        '/management/vehiculo/14/actualizar-localizacion',
+        '/management/vehiculo/15/actualizar-localizacion',
+        '/management/vehiculo/16/actualizar-localizacion'
+    ];
+
+    // Enviar la nueva localización a cada vehículo
+    urls.forEach((url, index) => {
+        const punto = rutaAlquilado[(posicion + index) % rutaAlquilado.length]; // Evita que se salga del array
+        axios.post(url, {
+            lat: punto.lat,
+            lng: punto.lon
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => {
+            console.log(`Vehículo ${index + 10} actualizado:`, response.data);
+        })
+        .catch(error => {
+            console.error(`Error actualizando vehículo ${index + 10}:`, error);
+        });
     });
 
-    // Simular el movimiento del vehículo alquilado
-    if(num >=9 ){
-        num = 0;
-    }else{
-        num++;
-    }
+    // Avanzar a la siguiente posición
+    num = (num >= rutaAlquilado.length - 1) ? 0 : num + 1;
 }
 
 </script>
