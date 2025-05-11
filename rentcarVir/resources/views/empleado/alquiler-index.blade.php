@@ -47,7 +47,7 @@
                         <th>Modelo del Coche</th>
                         <th>Usuario</th>
                         <th>Fecha y Hora de Devolución</th>
-                        <th>Acción</th>
+                        <th>Fecha y Hora de Recogida Real</th> <!-- Cambié "Acción" por "Fecha y Hora de Recogida Real" -->
                     </tr>
                 </thead>
                 <tbody>
@@ -78,6 +78,22 @@
                                         @endif
                                     </form>
                                 </td>
+                                <!-- Formulario de recogida real -->
+
+<td>
+    @if (!$alquiler->fechaRecogidaReal)
+        <form action="{{ route('alquiler.recogerReal', $alquiler->id) }}" method="POST">
+            @csrf
+            <input type="datetime-local" name="fecha_hora_recogida_real" class="form-control" required>
+            <button type="submit" class="btn btn-primary mt-2">Registrar Recogida Real</button>
+        </form>
+    @else
+        <span class="text-muted">
+            {{ \Carbon\Carbon::parse($alquiler->fechaRecogidaReal)->format('d-m-Y H:i') }}
+        </span>
+    @endif
+</td>
+
                             </tr>
                         @endif
                     @empty
@@ -85,29 +101,6 @@
                             <td colspan="7">No hay Resultados</td>
                         </tr>
                     @endforelse
-
-                    <!-- Mostrar alquileres entregados -->
-                    @foreach($alquileres as $alquiler)
-                        @if ($alquiler->fechaDevolucion && \Carbon\Carbon::parse($alquiler->fechaEntrega)->lt(Carbon\Carbon::now())) <!-- Solo alquileres entregados -->
-                            <tr style="background-color: #f2f2f2;">
-                                <td>{{ \Carbon\Carbon::parse($alquiler->fechaRecogida)->format("d-m-Y") }}</td>
-                                <td>{{ \Carbon\Carbon::parse($alquiler->fechaEntrega)->format("d-m-Y") }}</td>
-                                <td>{{ $alquiler->vehiculo->matricula }}</td>
-                                <td>{{ $alquiler->vehiculo->modelo }}</td>
-                                <td>
-                                    @if ($alquiler->cliente && $alquiler->cliente->usuario)
-                                        {{ $alquiler->cliente->usuario->username }}
-                                    @else
-                                        Cliente no disponible
-                                    @endif
-                                </td>
-                                <td>{{ \Carbon\Carbon::parse($alquiler->fechaDevolucion)->format('d-m-Y H:i') }}</td>
-                                <td>
-                                    <span class="text-muted">Devolución Confirmada</span>
-                                </td>
-                            </tr>
-                        @endif
-                    @endforeach
                 </tbody>
             </table>
         </div>
