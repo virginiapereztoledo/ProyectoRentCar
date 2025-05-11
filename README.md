@@ -60,9 +60,9 @@ DB_PASSWORD=
     php artisan migrate --seed
      ```
   
-10. **Ejecuta la aplicación::**:
+10. **Ejecuta la aplicación:**:
 
-   ```bash
+    ```bash
     php artisan serve
     ```
 
