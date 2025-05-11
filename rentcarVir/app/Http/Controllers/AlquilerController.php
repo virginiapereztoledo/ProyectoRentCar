@@ -180,5 +180,22 @@ class AlquilerController extends Controller
     return redirect()->route('alquiler.index')->with('success', 'Devolución registrada correctamente y vehículo disponible para alquiler.');
 }
 
+public function registrarRecogidaReal(Request $request, $id)
+{
+    $alquiler = Alquiler::findOrFail($id);
+
+    if ($alquiler->fechaRecogidaReal) {
+        return redirect()->back()->with('success', 'La recogida real ya ha sido registrada.');
+    }
+
+    $request->validate([
+        'fecha_hora_recogida_real' => 'required|date',
+    ]);
+
+    $alquiler->fechaRecogidaReal = $request->input('fecha_hora_recogida_real');
+    $alquiler->save();
+
+    return redirect()->route('alquiler.index')->with('success', 'Recogida real registrada correctamente el ' . \Carbon\Carbon::parse($alquiler->fechaRecogidaReal)->format('d-m-Y H:i'));
+}
 
 }
