@@ -84,3 +84,7 @@ Route::get('/management/localizacion', [LocalizacionController::class, 'index'])
     Route::put('alquiler/{id}/devolver', [AlquilerController::class, 'devolverAlquiler'])->name('alquiler.devolver');
 
     Route::get('/alquileres', [AlquilerController::class, 'mostrarAlquilerdelaño'])->name('alquiler.index');
+
+
+
+    Route::post('alquiler/recoger-real/{id}', [AlquilerController::class, 'registrarRecogidaReal'])->name('alquiler.recogerReal');
