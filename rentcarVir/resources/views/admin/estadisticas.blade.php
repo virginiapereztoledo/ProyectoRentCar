@@ -11,7 +11,7 @@
             <!-- Columna de la tabla -->
             <div class="col-md-6">
                 <div class="table-responsive">
-                    <table class="table table-striped table-sm"> <!-- Añadí 'table-sm' para hacer la tabla más pequeña -->
+                    <table class="table table-striped table-sm">
                         <thead>
                         <tr>
                             <th>Mes</th>
@@ -74,14 +74,26 @@
 
             <!-- Columna para el gráfico -->
             <div class="col-md-6">
-                <!-- Aquí va el gráfico -->
                 <canvas id="estadisticasChart" width="400" height="400"></canvas>
             </div>
         </div>
+
+        <!-- Mostrar los vehículos activos -->
+        <div class="row mt-4">
+            <h3>Vehículos Activos</h3>
+            <div class="col-md-12">
+                <ul>
+                    @foreach($vehiculosActivos as $vehiculo)
+                        <li>{{ $vehiculo->modelo }} - {{ $vehiculo->matricula }} ({{ $vehiculo->marca }})</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+
     </div>
 </section>
-
 @endsection
+
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
