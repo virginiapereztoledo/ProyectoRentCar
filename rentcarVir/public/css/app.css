@@ -623,3 +623,46 @@ input.form-control {
     font-size: 14px;
     font-weight: bold;
 }
+ /* Centrar todo el formulario en la página */
+    .custom-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Asegurarnos de que las etiquetas (labels) y los inputs estén alineados */
+    .custom-form .mb-3 {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    /* Centrar las etiquetas y los inputs dentro de su contenedor */
+    .custom-form .form-label {
+        margin-bottom: 0;
+        margin-right: 10px; /* Espacio entre el label y el input */
+        display: inline-block;
+        width: 150px;  /* Definir un ancho fijo para las etiquetas */
+    }
+
+    .custom-form .form-control {
+        width: 100%; /* El input tomará todo el espacio disponible */
+        max-width: 350px;  /* Ancho máximo de los inputs */
+        margin-left: 10px;
+    }
+
+    /* Estilo adicional para el formulario de los botones */
+    .custom-form .d-flex {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    /* Centrar los botones */
+    .custom-form .btn {
+        margin-left: 10px;
+    }
