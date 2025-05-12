@@ -141,15 +141,24 @@ class AlquilerController extends Controller
     }
 
 
-    public function getEstadisticas()
-    {
-        $array = [];
-        for ($month = 1; $month <= 12; $month++) {
-            $array[$month - 1] = count($this->obtenerAlquilerMensual($month));
-        }
-
-        return view("admin.estadisticas", ["value" => $array]);
+   public function getEstadisticas()
+{
+    // Obtener los alquileres mensuales
+    $array = [];
+    for ($month = 1; $month <= 12; $month++) {
+        $array[$month - 1] = count($this->obtenerAlquilerMensual($month));
     }
+
+    // Obtener los vehículos activos (disponibles)
+    $vehiculosActivos = Vehiculo::where('disponible', 1)->get();
+
+    // Pasar los datos a la vista
+    return view("admin.estadisticas", [
+        "value" => $array,
+        "vehiculosActivos" => $vehiculosActivos  // Asegúrate de pasar esta variable
+    ]);
+}
+
     public function devolverAlquiler(Request $request, $id)
 {
     $alquiler = Alquiler::findOrFail($id);
@@ -196,6 +205,8 @@ public function registrarRecogidaReal(Request $request, $id)
     $alquiler->save();
 
     return redirect()->route('alquiler.index')->with('success', 'Recogida real registrada correctamente el ' . \Carbon\Carbon::parse($alquiler->fechaRecogidaReal)->format('d-m-Y H:i'));
+
 }
+
 
 }

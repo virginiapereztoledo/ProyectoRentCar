@@ -4,20 +4,25 @@
 <script src="{{asset("js/catalogo.js")}}"></script>
 @endpush
 @section("content")
-<div class="container mt-51">
+<div class="container mt-5">
     @if ($message = Session::get('success'))
-    <div class="alert alert-success text-center">{{ $message }}</div>
+        <div class="alert alert-success text-center" style="margin-top: 100px;">
+            {{ $message }}
+        </div>
     @endif
+
     @if ($errors->any())
-    <div class="alert alert-danger text-center">{{$message }}
-        <p>¡ATENCIÓN! Ocurrieron los siguientes errores:</p>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger text-center" style="margin-top: 100px;">
+            <p><strong>¡ATENCIÓN!</strong> Ocurrieron los siguientes errores:</p>
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
+
+
 
     <section class="container seccion-catalogo pt-4">
         <div class="text-center mb-4">
