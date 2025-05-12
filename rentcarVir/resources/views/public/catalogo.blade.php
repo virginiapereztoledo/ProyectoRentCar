@@ -20,7 +20,6 @@
     @endif
 
     <section class="container seccion-catalogo pt-4">
-
         <div class="text-center mb-4">
             <h1>Explora nuestro Catálogo de Coches</h1>
             <p>
@@ -33,17 +32,14 @@
         <section class="search-section my-5">
             <form action="{{ route('catalogo') }}" method="GET" class="form-catalogo">
                 <div class="row g-5 align-items-end">
-                    <!-- Buscador -->
                     <div class="col-md-5">
                         <label for="search" class="form-label">Buscar vehículo</label>
-<div class="input-group" style="width: 100%;">
-    <input type="search" id="search" name="search" class="form-control" placeholder="Marca o modelo" value="{{ request()->input('search') }}">
-    <button type="submit" class="btn btn-primary">Buscar</button>
-</div>
-
+                        <div class="input-group" style="width: 100%;">
+                            <input type="search" id="search" name="search" class="form-control" placeholder="Marca o modelo" value="{{ request()->input('search') }}">
+                            <button type="submit" class="btn btn-primary">Buscar</button>
+                        </div>
                     </div>
 
-                    <!-- Filtro: Rango de precios -->
                     <div class="col-md-3">
                         <label class="form-label">Rango de precios</label>
                         <div class="d-flex align-items-center">
@@ -53,7 +49,6 @@
                         </div>
                     </div>
 
-                    <!-- Filtro: Asientos -->
                     <div class="col-md-3">
                         <label for="asientos" class="form-label">Asientos</label>
                         <select name="asientos" id="asientos" class="form-select">
@@ -64,7 +59,6 @@
                         </select>
                     </div>
 
-                    <!-- Filtro: Recogida y entrega -->
                     @can('isClient')
                     <div class="col-md-4">
                         <label class="form-label">Recogida y entrega</label>
@@ -98,13 +92,9 @@
             </form>
         </section>
 
-
-
-
         @if ($message = Session::get('empty'))
         <div class="alert alert-info text-center">{{ $message }}</div>
         @endif
-
 
         <section class="result-section">
             <div class="row">
@@ -112,7 +102,9 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 {{ $alquiler->disponible}}">
                         <img src="{{ asset($alquiler->foto) }}" class="card-img-top" alt="Imagen del vehículo">
-                        <div class="card-body">
+
+                        {{-- MODIFICADO EL CARD BODY PARA TENER ALTURA FIJA Y SCROLL --}}
+                        <div class="card-body" style="max-height: 655px; overflow-y: auto;">
                             <h5 class="card-title1">{{ $alquiler->modelo }}</h5>
                             <p class="card-text1">{{ $alquiler->marca }}</p>
                             <p class="card-text1"><strong>Precio diario:</strong> {{ $alquiler->costoDiario }} €</p>
@@ -128,19 +120,30 @@
 
                             @can("isClient")
                             @if ($alquiler->disponible)
-                            <form action="{{ route('reservar') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ Crypt::encrypt($alquiler->id) }}">
-                                <input type="hidden" name="fechaRecogida" value="{{ Crypt::encrypt(request()->input('fechaRecogida')) }}">
-                                <input type="hidden" name="lugarRecogida" value="{{ Crypt::encrypt(request()->input('lugarRecogida')) }}">
-                                <input type="hidden" name="horaRecogida" value="{{ Crypt::encrypt(request()->input('horaRecogida')) }}">
-                                <input type="hidden" name="fechaEntrega" value="{{ Crypt::encrypt(request()->input('fechaEntrega')) }}">
-                                <input type="hidden" name="lugarEntrega" value="{{ Crypt::encrypt(request()->input('lugarEntrega')) }}">
-                                <input type="hidden" name="horaEntrega" value="{{ Crypt::encrypt(request()->input('horaEntrega')) }}">
-                                <button class="btn btn-primary mt-2" type="submit">Reservar</button>
-                            </form>
+                                @php
+                                    $fechaRecogida = request()->input('fechaRecogida');
+                                    $fechaEntrega = request()->input('fechaEntrega');
+                                    $horaRecogida = request()->input('horaRecogida');
+                                    $horaEntrega = request()->input('horaEntrega');
+                                @endphp
+
+                                @if ($fechaRecogida && $fechaEntrega && $horaRecogida && $horaEntrega)
+                                    <form action="{{ route('reservar') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ Crypt::encrypt($alquiler->id) }}">
+                                        <input type="hidden" name="fechaRecogida" value="{{ Crypt::encrypt($fechaRecogida) }}">
+                                        <input type="hidden" name="lugarRecogida" value="{{ Crypt::encrypt(request()->input('lugarRecogida')) }}">
+                                        <input type="hidden" name="horaRecogida" value="{{ Crypt::encrypt($horaRecogida) }}">
+                                        <input type="hidden" name="fechaEntrega" value="{{ Crypt::encrypt($fechaEntrega) }}">
+                                        <input type="hidden" name="lugarEntrega" value="{{ Crypt::encrypt(request()->input('lugarEntrega')) }}">
+                                        <input type="hidden" name="horaEntrega" value="{{ Crypt::encrypt($horaEntrega) }}">
+                                        <button class="btn btn-primary mt-2" type="submit">Reservar</button>
+                                    </form>
+                                @else
+                                    <p class="text-warning mt-3">⚠️ Para reservar, primero completa la búsqueda con fecha y hora.</p>
+                                @endif
                             @else
-                            <p class="text-danger mt-4">No disponible</p>
+                                <p class="text-danger mt-4">No disponible</p>
                             @endif
                             @endcan
                         </div>
