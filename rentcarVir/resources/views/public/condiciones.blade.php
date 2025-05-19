@@ -65,8 +65,15 @@
                         </svg>
                         RentCarVir@soporte.com
                     </a>
-                    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses!2ses!4v1743862067771!5m2!1ses!2ses!6m8!1m7!1sPexdKK0Eg1HAw5iL7_EhpQ!2m2!1d36.53322161786441!2d-4.624847314905856!3f141.61265204877387!4f-6.093175658330367!5f0.7820865974627469" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        Calle Miguel Marquez, 29640 Fuengirola, Málaga, España
+                    <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses!2ses!4v1743862067771!5m2!1ses!2ses!6m8!1m7!1sPexdKK0Eg1HAw5iL7_EhpQ!2m2!1d36.53322161786441!2d-4.624847314905856!3f141.61265204877387!4f-6.093175658330367!5f0.7820865974627469"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+<p>Calle Miguel Márquez, 29640 Fuengirola, Málaga, España</p>
+
                     </a>
                 </address>
             </section>
