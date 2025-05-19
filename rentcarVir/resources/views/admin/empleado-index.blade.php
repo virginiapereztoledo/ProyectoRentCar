@@ -47,9 +47,9 @@
                                         <form action="{{ route('empleado.destroy', $empleado->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button id="{{ $empleado->id }}" type="submit" class="btn btn-danger">
-                                                Eliminar
-                                            </button>
+                                            <button id="{{ $empleado->id }}" type="submit" class="btn btn-eliminar-empleado">
+    Eliminar
+</button>
                                         </form>
                                     </div>
                                 </td>

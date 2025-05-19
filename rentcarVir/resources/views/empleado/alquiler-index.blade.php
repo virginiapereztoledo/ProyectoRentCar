@@ -25,18 +25,18 @@
                 <h2>Alquileres</h2>
             </div>
 
-            <form action="{{ route('alquiler.month') }}" method="POST" class="d-flex justify-content-center align-items-center mb-4">
-                @csrf
-                <label for="mes" class="form-label me-2">Mes:</label>
-                <select name="mes" id="mes" class="form-select" onchange="this.form.submit()">
-                    <option value="0" {{ app('request')->input('mes') == 0 ? 'selected' : '' }}>Cualquiera</option>
-                    @foreach (range(1, 12) as $month)
-                        <option value="{{ $month }}" {{ app('request')->input('mes') == $month ? 'selected' : '' }}>
-                            {{ \Carbon\Carbon::create()->locale('es')->month($month)->monthName }}
-                        </option>
-                    @endforeach
-                </select>
-            </form>
+            <form action="{{ route('alquiler.month') }}" method="POST" class="d-flex justify-content-center align-items-center mb-4 gap-2">
+    @csrf
+    <label for="mes" class="form-label mb-0">Mes:</label>
+    <select name="mes" id="mes" class="form-select form-select-sm select-mes-custom" onchange="this.form.submit()">
+        <option value="0" {{ app('request')->input('mes') == 0 ? 'selected' : '' }}>Cualquiera</option>
+        @foreach (range(1, 12) as $month)
+            <option value="{{ $month }}" {{ app('request')->input('mes') == $month ? 'selected' : '' }}>
+                {{ \Carbon\Carbon::create()->locale('es')->month($month)->monthName }}
+            </option>
+        @endforeach
+    </select>
+</form>
 
             <table class="table table-striped">
                 <thead>
@@ -71,11 +71,11 @@
                         @csrf
                         @method('PUT')
                         <input type="datetime-local" name="fecha_devolucion" class="form-control" value="{{ $alquiler->fechaDevolucion ? \Carbon\Carbon::parse($alquiler->fechaDevolucion)->format('Y-m-d\TH:i') : '' }}">
-                        @if (!$alquiler->fechaDevolucion)
-                            <button type="submit" class="btn btn-success mt-2">Registrar Devolución</button>
-                        @else
-                            <span class="text-success">Devolución Registrada</span>
-                        @endif
+                       @if (!$alquiler->fechaDevolucion)
+    <button type="submit" class="btn btn-devolucion mt-2">Registrar Devolución</button>
+@else
+    <span class="text-success">Devolución Registrada</span>
+@endif
                     </form>
                 </td>
                 <!-- Formulario de recogida real -->

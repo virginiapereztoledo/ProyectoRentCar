@@ -78,17 +78,7 @@
             </div>
         </div>
 
-        <!-- Mostrar los vehículos activos -->
-        <div class="row mt-4">
-            <h3>Vehículos Activos</h3>
-            <div class="col-md-12">
-                <ul>
-                    @foreach($vehiculosActivos as $vehiculo)
-                        <li>{{ $vehiculo->modelo }} - {{ $vehiculo->matricula }} ({{ $vehiculo->marca }})</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+
 
     </div>
 </section>

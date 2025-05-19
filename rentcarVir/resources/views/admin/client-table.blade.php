@@ -34,9 +34,9 @@
                     <td>{{ $cliente->fechaNacimiento }}</td>
                     <td>
                         <div class="d-flex gap-2">
-                            <button id="{{ $cliente->id }}" data-username="{{ $cliente->usuario ? $cliente->usuario->username : '' }}" type="button" class="btn btn-danger btn-sm client-to-delete">
-                                Eliminar
-                            </button>
+                            <button ... class="btn btn-eliminar-interactivo btn-sm client-to-delete">
+    Eliminar
+</button>
                         </div>
                     </td>
                 </tr>

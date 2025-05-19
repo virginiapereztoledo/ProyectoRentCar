@@ -666,3 +666,121 @@ input.form-control {
     .custom-form .btn {
         margin-left: 10px;
     }
+.btn-login-small {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.9rem;
+        width: 160px !important;
+        display: block;
+        margin: 0 auto;
+}
+/* Botón Modificar (ya existe como btn-primary, pero puedes personalizar si quieres) */
+.btn-modificar {
+    background: linear-gradient(45deg, #4A90E2, #FF6F61);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: 0.3s;
+}
+.btn-modificar:hover {
+    filter: brightness(0.9);
+    transform: scale(1.07);
+}
+
+/* Botón Detalles (verde degradado) */
+.btn-detalles {
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: 0.3s;
+}
+.btn-detalles:hover {
+    filter: brightness(0.9);
+    transform: scale(1.07);
+}
+
+/* Botón Eliminar (rojo degradado) */
+.btn-eliminar {
+    background: linear-gradient(45deg, #ff5858, #f09819);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: 0.3s;
+}
+.btn-eliminar:hover {
+    filter: brightness(0.9);
+    transform: scale(1.07);
+}
+.btn-devolucion {
+    background: linear-gradient(45deg, #43e97b, #38f9d7); /* Verde degradado */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: 0.3s;
+}
+.btn-devolucion:hover {
+    filter: brightness(0.9);
+    transform: scale(1.07);
+}
+.select-mes-custom {
+        width: 160px !important;
+        min-width: unset;
+        display: inline-block;
+        margin-left: 4px;
+    }
+.btn-eliminar-interactivo {
+    background: linear-gradient(45deg, #ff5858, #f09819);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    transition: 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(255, 88, 88, 0.08);
+}
+.btn-eliminar-interactivo:hover, .btn-eliminar-interactivo:focus {
+    background: linear-gradient(45deg, #f09819, #ff5858);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255, 88, 88, 0.18);
+    transform: scale(1.05);
+}
+.btn-eliminar-todo {
+    background: linear-gradient(45deg, #8e2de2, #ff6a00); /* Morado a naranja */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    transition: 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(142, 45, 226, 0.08);
+}
+.btn-eliminar-todo:hover, .btn-eliminar-todo:focus {
+    background: linear-gradient(45deg, #ff6a00, #8e2de2);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(142, 45, 226, 0.18);
+    transform: scale(1.05);
+}
+.btn-eliminar-empleado {
+    background: linear-gradient(45deg, #ff5858, #f09819); /* Rojo degradado */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    transition: 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(255, 88, 88, 0.08);
+}
+.btn-eliminar-empleado:hover, .btn-eliminar-empleado:focus {
+    background: linear-gradient(45deg, #f09819, #ff5858);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255, 88, 88, 0.18);
+    transform: scale(1.05);
+}

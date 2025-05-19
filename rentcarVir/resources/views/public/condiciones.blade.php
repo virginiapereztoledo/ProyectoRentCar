@@ -11,22 +11,26 @@
     </div>
     <div class="row">
         <div class="col-md-12 mb-4">
-            <section class="bg-light p-4 rounded">
-                <h2 class="interior">Términos y Condiciones Generales</h2>
-                <p class="oscuro">
-                    En Rent Car Vir, nos comprometemos a brindarle un servicio claro y sin sorpresas. En nuestras oficinas encontrará los documentos fundamentales que rigen nuestro servicio de alquiler:
-                </p>
-                <ul>
-                    <li><strong>Política de Privacidad:</strong> Explica cómo gestionamos y protegemos su información personal.</li>
-                    <li><strong>Acuerdo de Alquiler: </strong> Documento que debe firmar al momento de alquilar un vehículo, confirmando su aceptación de nuestras condiciones.</li>
-                    <li><strong>Tarifas: </strong> Incluye todas las tarifas de alquiler y cualquier cargo adicional aplicable.</li>
-                    <li><strong>Normas de Daños: </strong> Detalla los procedimientos y reglas a seguir en caso de que el vehículo sufra daños durante el alquiler.</li>
-                </ul>
-                <p class="oscuro">
-                    Estos documentos estarán disponibles en formato físico en nuestras oficinas. Al firmar el Acuerdo de Alquiler, usted declara haber leído y aceptado todos los términos. Si lo prefiere, podemos enviárselos por correo electrónico.
-                </p>
-            </section>
-        </div>
+    <section class="bg-light p-4 rounded">
+        <h2 class="interior">Términos y Condiciones Generales</h2>
+        <p class="oscuro">
+            En Rent Car Vir, nos comprometemos a brindarle un servicio claro y sin sorpresas. En nuestras oficinas encontrará los documentos fundamentales que rigen nuestro servicio de alquiler:
+        </p>
+        <ul>
+            <li><strong>Política de Privacidad:</strong> Explica cómo gestionamos y protegemos su información personal.</li>
+            <li><strong>Acuerdo de Alquiler: </strong> Documento que debe firmar al momento de alquilar un vehículo, confirmando su aceptación de nuestras condiciones.</li>
+            <li><strong>Tarifas: </strong> Incluye todas las tarifas de alquiler y cualquier cargo adicional aplicable.</li>
+            <li><strong>Normas de Daños: </strong> Detalla los procedimientos y reglas a seguir en caso de que el vehículo sufra daños durante el alquiler.</li>
+        </ul>
+        <p class="oscuro">
+            Para garantizar una correcta gestión del servicio, solo se permite una reserva activa por cliente, ya que cada operación queda vinculada al número de DNI proporcionado.
+        </p>
+        <p class="oscuro">
+            Estos documentos estarán disponibles en formato físico en nuestras oficinas. Al firmar el Acuerdo de Alquiler, usted declara haber leído y aceptado todos los términos.
+        </p>
+    </section>
+</div>
+
         <div class="col-md-6 mb-4">
             <section class="bg-light p-4 rounded">
                 <h2 class="interior">Acceso a Servicios</h2>

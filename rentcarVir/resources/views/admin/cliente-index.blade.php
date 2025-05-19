@@ -12,9 +12,9 @@
             <!-- Formulario con estilo de Bootstrap -->
             <form action="{{ route('cliente.deleteAll') }}" method="POST">
                 @csrf
-                <button id="delete-all" type="button" class="btn btn-danger">
-                    Eliminar todos
-                </button>
+                <button id="delete-all" type="button" class="btn btn-eliminar-todo">
+    Eliminar todos
+</button>
             </form>
         </div>
 

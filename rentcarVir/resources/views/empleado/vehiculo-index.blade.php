@@ -41,20 +41,20 @@
                             <td>{{ $vehiculo->costoDiario }} €</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('vehiculo.mostrar', $vehiculo) }}" class="btn btn-warning">
-                                        Detalles
-                                    </a>
-                                    <a href="{{ route('vehiculo.edit', $vehiculo) }}" class="btn btn-primary">
-                                        Modificar
-                                    </a>
-                                    <form action="{{ route('vehiculo.destroy', $vehiculo) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            Eliminar
-                                        </button>
-                                    </form>
-                                </div>
+    <a href="{{ route('vehiculo.mostrar', $vehiculo) }}" class="btn btn-detalles">
+        Detalles
+    </a>
+    <a href="{{ route('vehiculo.edit', $vehiculo) }}" class="btn btn-modificar">
+        Modificar
+    </a>
+    <form action="{{ route('vehiculo.destroy', $vehiculo) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-eliminar">
+            Eliminar
+        </button>
+    </form>
+</div>
                             </td>
                         </tr>
                     @empty
