@@ -33,12 +33,21 @@
                     <td>{{ $cliente->ocupacion }}</td>
                     <td>{{ $cliente->fechaNacimiento }}</td>
                     <td>
-                        <div class="d-flex gap-2">
-                            <button ... class="btn btn-eliminar-interactivo btn-sm client-to-delete">
-    Eliminar
-</button>
-                        </div>
-                    </td>
+    <div class="d-flex gap-2">
+<form action="{{ route('cliente.destroy', $cliente->id) }}" method="POST" class="form-eliminar">
+    @csrf
+    @method('DELETE')
+    <button
+        type="submit"
+        class="btn btn-eliminar-interactivo btn-sm client-to-delete"
+        data-username="{{ $cliente->usuario->username ?? 'este cliente' }}">
+        Eliminar
+    </button>
+</form>
+
+
+    </div>
+</td>
                 </tr>
             @empty
                 <tr>

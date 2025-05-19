@@ -10,12 +10,12 @@
         <div class="d-flex justify-content-between mb-3">
             <h2>Gestión Clientes</h2>
             <!-- Formulario con estilo de Bootstrap -->
-            <form action="{{ route('cliente.deleteAll') }}" method="POST">
-                @csrf
-                <button id="delete-all" type="button" class="btn btn-eliminar-todo">
-    Eliminar todos
-</button>
-            </form>
+            <form action="{{ route('cliente.deleteAll') }}" method="POST" class="form-eliminar">
+    @csrf
+    <button id="delete-all" type="submit" class="btn btn-eliminar-todo">
+        Eliminar todos
+    </button>
+</form>
         </div>
 
         <div id="table_data" data-route="{{ route('cliente.index') }}">

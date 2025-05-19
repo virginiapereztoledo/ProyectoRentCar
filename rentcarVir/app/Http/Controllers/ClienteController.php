@@ -191,4 +191,21 @@ class ClienteController extends Controller
         StorageController::deleteDirectory(public_path("storage/cliente"));
         return redirect()->route("cliente.index");
     }
+    /**
+ * Elimina un cliente específico.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function destroy($id)
+{
+    // Elimina el usuario relacionado
+    Usuario::where("utenteable_type", "App\Models\Cliente")->where("utenteable_id", $id)->delete();
+    // Elimina el cliente
+    Cliente::where("id", $id)->delete();
+    // Elimina la imagen asociada
+    StorageController::findAndDeleteImage($id, "cliente");
+
+    return redirect()->route('cliente.index')->with('success', 'Cliente eliminado correctamente');
+}
 }

@@ -88,3 +88,6 @@ Route::get('/management/localizacion', [LocalizacionController::class, 'index'])
 
 
     Route::post('alquiler/recoger-real/{id}', [AlquilerController::class, 'registrarRecogidaReal'])->name('alquiler.recogerReal');
+
+
+Route::delete('management/cliente/{cliente}', [ClienteController::class, 'destroy'])->name('cliente.destroy');

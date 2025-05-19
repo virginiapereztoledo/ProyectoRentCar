@@ -47,7 +47,7 @@
     <a href="{{ route('vehiculo.edit', $vehiculo) }}" class="btn btn-modificar">
         Modificar
     </a>
-    <form action="{{ route('vehiculo.destroy', $vehiculo) }}" method="POST">
+    <form action="{{ route('vehiculo.destroy', $vehiculo) }}" method="POST" class="form-eliminar">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-eliminar">

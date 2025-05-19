@@ -19,6 +19,6 @@
     @stack('scripts')
 
     @include("components.footer") <!-- Pie de página -->
-
+  @stack('javascript')
 </body>
 </html>
