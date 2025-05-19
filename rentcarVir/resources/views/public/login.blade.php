@@ -38,7 +38,7 @@
 
 
 
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <button type="submit" class="btn btn-primary btn-login-small w-100">Login</button>
         </form>
 
         <p class="mt-3 text-center">
