@@ -26,7 +26,7 @@ Sigue estos pasos para descargar y configurar el proyecto en tu máquina local:
      ```
 4. - **Enlace para descargar la base de datos**: 
    ```markdown
-   🔗 [Descargar base de datos](https://github.com/virginiapereztoledo/ProyectoFinalRentCarVir/blob/master/Base%20de%20Datos/nuevas.sql)
+   🔗 [Descargar base de datos](https://github.com/virginiapereztoledo/ProyectoRentCar/blob/master/nueva.sql)
 
 5. **Configura el archivo .env:**:
 
