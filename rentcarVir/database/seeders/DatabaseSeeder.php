@@ -284,8 +284,8 @@ class DatabaseSeeder extends Seeder
 
         // --- ALQUILERES ---
         DB::table('alquiler')->insert([
-            ['id' => 7, 'fechaRecogida' => '2025-05-16', 'lugarRecogida' => 'Fuengirola', 'horaRecogida' => '08:00', 'fechaEntrega' => '2025-05-18', 'lugarEntrega' => 'Fuengirola', 'horaEntrega' => '08:00', 'importe' => 95.00, 'activo' => 0, 'clienteID' => 1, 'vehiculoID' => 13],
-            ['id' => 8, 'fechaRecogida' => '2025-06-17', 'lugarRecogida' => 'Fuengirola', 'horaRecogida' => '08:00', 'fechaEntrega' => '2025-06-18', 'lugarEntrega' => 'Fuengirola', 'horaEntrega' => '08:00', 'importe' => 75.00, 'activo' => 1, 'clienteID' => 4948, 'vehiculoID' => 12],
+            ['id' => 7, 'fechaRecogida' => '2025-07-16', 'lugarRecogida' => 'Fuengirola', 'horaRecogida' => '08:00', 'fechaEntrega' => '2025-07-18', 'lugarEntrega' => 'Fuengirola', 'horaEntrega' => '08:00', 'importe' => 95.00, 'activo' => 0, 'clienteID' => 1, 'vehiculoID' => 13],
+            ['id' => 8, 'fechaRecogida' => '2025-06-25', 'lugarRecogida' => 'Fuengirola', 'horaRecogida' => '08:00', 'fechaEntrega' => '2025-06-28', 'lugarEntrega' => 'Fuengirola', 'horaEntrega' => '08:00', 'importe' => 75.00, 'activo' => 1, 'clienteID' => 4948, 'vehiculoID' => 12],
 
         ]);
     }

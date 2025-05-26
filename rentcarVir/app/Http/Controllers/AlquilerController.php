@@ -125,20 +125,22 @@ class AlquilerController extends Controller
             ->get();
     }
 
-    public function mostrarAlquileresMensual(Request $request)
-    {
-        $mes = $request->input('mes');
+public function mostrarAlquileresMensual(Request $request)
+{
+    $mes = $request->input('mes');
 
-        $alquileres = Alquiler::with(['vehiculo', 'cliente.usuario']) // Asegura las relaciones
-            ->when($mes > 0, function ($query) use ($mes) {
-                return $query->whereMonth('fechaRecogida', $mes)
-                             ->orWhereMonth('fechaEntrega', $mes);
-            })
-            ->orderBy('fechaRecogida', 'asc')
-            ->get();
+    $alquileres = Alquiler::with(['vehiculo', 'cliente.usuario'])
+        ->when($mes > 0, function ($query) use ($mes) {
+            return $query->whereMonth('fechaRecogida', $mes)
+                         ->orWhereMonth('fechaEntrega', $mes)
+                         ->orWhereMonth('fechaDevolucion', $mes); // Añadimos esto también por si ya fue devuelto
+        })
+        ->orderBy('fechaRecogida', 'asc')
+        ->get();
 
-        return view('empleado.alquiler-index', ['alquileres' => $alquileres]);
-    }
+    return view('empleado.alquiler-index', ['alquileres' => $alquileres]);
+}
+
 
 
    public function getEstadisticas()
