@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="icon" type="image/png" href="{{ asset('LOGORENT.png') }}">
-
-
 </head>
 
 <body class="d-flex flex-column min-vh-100 @if(Route::currentRouteName() === 'home') home @endif">
@@ -47,21 +45,39 @@
                     </ul>
                 </div>
 
-                <div class="d-flex gap-2 ms-auto">
+                <div class="d-flex gap-2 ms-auto align-items-center">
                     @guest
                         <a class="btn btn-outline-primary btn-hover" href="{{ route('login') }}">Iniciar sesión</a>
                         <a class="btn btn-primary btn-hover" href="{{ route('register') }}">Registro</a>
                     @else
-                        <a class="btn btn-outline-secondary btn-hover" href="@can('isClient'){{ route('cliente.edit.profile') }}@endcan @can('isEmpleado'){{ route('vehiculo.index') }}@endcan @can('isAdmin'){{ route('cliente.index') }}@endcan">Zona personal</a>
+                        <span class="me-3">
+                            {{ Auth::user()->username }} —
+                            Rol:
+                            @switch(class_basename(Auth::user()->utenteable_type))
+                                @case('Cliente')
+                                    Cliente
+                                    @break
+                                @case('Empleado')
+                                    Empleado
+                                    @break
+                                @case('Admin')
+                                    Administrador
+                                    @break
+                                @default
+                                    Usuario
+                            @endswitch
+                        </span>
+                        <a class="btn btn-outline-secondary btn-hover" href="
+                            @can('isClient'){{ route('cliente.edit.profile') }}@endcan
+                            @can('isEmpleado'){{ route('vehiculo.index') }}@endcan
+                            @can('isAdmin'){{ route('cliente.index') }}@endcan
+                        ">Zona personal</a>
                         <a class="btn btn-outline-danger btn-hover" href="{{ route('logout') }}">Salir</a>
                     @endguest
                 </div>
             </div>
         </nav>
     </header>
-
-
-
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
