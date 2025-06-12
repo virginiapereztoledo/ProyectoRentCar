@@ -77,7 +77,7 @@ Puedes ver un recorrido en video del funcionamiento de la aplicación en el sigu
 
 También puedes descargar el documento en PDF con más detalles sobre el proyecto en el siguiente enlace:
 
-🔗 [Ver PDF del proyecto]([Pdf Documentacion]).(Documentacion/ProyectoIntegrado.pdf).
+🔗 [Ver PDF del proyecto]([Pdf Documentacion]).([Documentacion/ProyectoIntegrado.pdf](https://github.com/virginiapereztoledo/ProyectoRentCar/tree/master/Documentacion)).
 
 ## 🔑 Accesos para usuarios
 
