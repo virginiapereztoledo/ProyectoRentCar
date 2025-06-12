@@ -145,19 +145,20 @@ public function mostrarAlquileresMensual(Request $request)
 
    public function getEstadisticas()
 {
-    // Obtener los alquileres mensuales
+    $year = Carbon::today()->year;
     $array = [];
+
     for ($month = 1; $month <= 12; $month++) {
-        $array[$month - 1] = count($this->obtenerAlquilerMensual($month));
+        $array[$month - 1] = Alquiler::whereYear('fechaRecogida', $year)
+            ->whereMonth('fechaRecogida', $month)
+            ->count();
     }
 
-    // Obtener los vehículos activos (disponibles)
     $vehiculosActivos = Vehiculo::where('disponible', 1)->get();
 
-    // Pasar los datos a la vista
     return view("admin.estadisticas", [
         "value" => $array,
-        "vehiculosActivos" => $vehiculosActivos  // Asegúrate de pasar esta variable
+        "vehiculosActivos" => $vehiculosActivos
     ]);
 }
 
