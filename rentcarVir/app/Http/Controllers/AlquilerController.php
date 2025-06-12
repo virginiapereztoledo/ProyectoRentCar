@@ -131,9 +131,20 @@ public function mostrarAlquileresMensual(Request $request)
 
     $alquileres = Alquiler::with(['vehiculo', 'cliente.usuario'])
         ->when($mes > 0, function ($query) use ($mes) {
-            return $query->whereMonth('fechaRecogida', $mes)
-                         ->orWhereMonth('fechaEntrega', $mes)
-                         ->orWhereMonth('fechaDevolucion', $mes); // Añadimos esto también por si ya fue devuelto
+            $query->where(function ($q) use ($mes) {
+                $q->whereMonth('fechaRecogida', $mes)
+                  ->orWhereMonth('fechaEntrega', $mes)
+                  ->orWhereMonth('fechaDevolucion', $mes);
+            });
+        })
+        ->where(function ($query) {
+            // Activos
+            $query->where('activo', true)
+                // O históricos: devueltos y con recogida real registrada
+                ->orWhere(function ($q) {
+                    $q->whereNotNull('fechaRecogidaReal')
+                      ->whereNotNull('fechaDevolucion');
+                });
         })
         ->orderBy('fechaRecogida', 'asc')
         ->get();
@@ -142,15 +153,16 @@ public function mostrarAlquileresMensual(Request $request)
 }
 
 
-
    public function getEstadisticas()
 {
     $year = Carbon::today()->year;
     $array = [];
 
     for ($month = 1; $month <= 12; $month++) {
-        $array[$month - 1] = Alquiler::whereYear('fechaRecogida', $year)
-            ->whereMonth('fechaRecogida', $month)
+        $array[$month - 1] = Alquiler::whereYear('fechaRecogidaReal', $year)
+            ->whereMonth('fechaRecogidaReal', $month)
+            ->whereNotNull('fechaRecogidaReal')
+            ->whereNotNull('fechaDevolucion')
             ->count();
     }
 
@@ -161,7 +173,6 @@ public function mostrarAlquileresMensual(Request $request)
         "vehiculosActivos" => $vehiculosActivos
     ]);
 }
-
     public function devolverAlquiler(Request $request, $id)
 {
     $alquiler = Alquiler::findOrFail($id);
